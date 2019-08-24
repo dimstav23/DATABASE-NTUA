@@ -1,0 +1,487 @@
+* {
+	font-family: Monotype Corsiva, sans-serif; 
+}
+
+
+html, body {
+    margin: 0;
+    height: 100%;
+    position:static;
+}
+
+
+body { 
+	background-image: #cccccc;
+	position:static;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+h1, table {
+	text-align: center; 
+}
+
+/*h1 {
+	
+	border:5px solid  FireBrick;	
+	background-color:FFCC66;
+	border-radius: 100px;
+	text-decoration:underline;
+}*/
+
+
+table {
+	border-collapse: collapse;
+	border:5px solid gray;  
+	width: 70%; 
+	margin: 0 auto 5rem;
+}
+
+th, td {
+	padding: 1.5rem;
+	font-size: 1.25rem; 
+}
+
+tr {
+	background: #000000; 
+}
+
+tr, td { 
+	transition: .4s ease-in; 
+} 
+
+tr:first-child {
+	background: #ffffff;/*hsla(12, 100%, 40%, 0.5);*/ 
+}
+
+
+/*tr:nth-child(even) { 
+	background: hsla(50, 50%, 80%, 0.7);
+}
+*/
+
+td:empty {
+	background: hsla(50, 25%, 60%, 0.7); 
+
+}
+
+tr:hover:not(#firstrow), tr:hover td:empty {
+	pointer-events: visible;
+	color:#ffffff;
+}
+tr:hover:not(#firstrow) { 
+	font-weight: 800; 
+	box-shadow: 0px 3px 7px ;
+}
+
+#firstrow{
+	position:static;
+	z-index:5;	
+}
+
+
+/*BUTTONS!!!*/
+
+#mybuttons{
+	position: fixed;
+  	bottom: 0;
+  	left: 5;
+	z-index:5;
+}
+
+
+#insert {
+    background-color: black;
+    color: yellow;
+    font-size:18px;
+    font-family:Courier,sans-serif;
+    border: 2px solid ;
+    font-weight:bold;
+    height:25px;
+    width:100px;
+}
+#insert {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#insert:hover {
+     /* Green */
+    color: white;
+}
+
+
+#delete {
+    background-color: black;
+    color: yellow;
+    font-size:18px;
+    font-family:Courier,sans-serif;
+    border: 2px solid ; /* Red */
+    font-weight:bold;
+    height:25px;
+    width:100px;
+}
+
+#delete {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#delete:hover {
+     /* Red */
+    color: white;
+}
+
+#submit {
+    background-color: black;
+    color: yellow;
+    font-size:18px;
+    font-family:Courier,sans-serif;
+    border: 2px solid ; /* Black */
+    font-weight:bold;
+    height:25px;
+    width:100px;
+}
+
+#submit{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#submit:hover {
+    color: white;
+}
+
+#update {
+    background-color: black;
+    color: yellow;
+    font-size:18px;
+    font-family:Courier,sans-serif;
+    border: 2px solid #000000; /*Black*/
+    font-weight:bold;
+    height:25px;
+    width:100px;
+}
+#update {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#update:hover {
+    
+    color: white;
+}
+/*list*/
+ul
+{
+    list-style-type: none;
+}
+
+#names{
+	font-size:10px;
+}
+
+#mytitle{
+	
+	text-decoration:underline;
+	
+}
+
+
+/*MENU!!!!*/
+
+div.menu2
+{
+    /*width:500px;margin:0 auto;*//*Uncomment this line to make the menu center-aligned.*/
+    text-align:center;
+    background-image: url(bg1.gif);
+    border:1px solid black;
+    font-size:0;
+    margin-bottom:10;
+}
+
+div.menu2 a
+{
+    display: inline-block;
+    padding: 0 20px;
+    background-image: url(bg.gif);
+    color:Firebrick;
+    text-decoration:none;
+    font: bold 12px Courier;
+    line-height: 32px;
+}
+
+div.menu2 a:hover
+{
+    background-position:0 -60px;
+    color:yellow;
+}
+
+div.menu2 a.current
+{
+	font-family:Times New Roman,sans-serif;
+    border:5px dotted black;
+    background-position:0 -60px;
+    background-color:gray;
+    color:white;
+    font-size:18px;
+}
+
+.infos{
+	font-family:Courier,sans-serif;
+	font-size:20px;
+	color:black;
+	text-align:center;
+		
+}
+
+
+
+/*pop up windows*/
+
+
+.box {
+  width: 20%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 5px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+/*
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  border: 2px solid orange;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+*/
+.button:hover {
+  background: orange;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position:fixed;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 50px auto;
+  padding: 50px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Courier, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .content .submit {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: red;
+}
+.popup .submit:hover {
+  color: green;
+}
+.popup .content {
+  max-height: 20%;
+  overflow: auto;
+}
+
+.insertion-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+/*Checkboxes*/
+.mybox{
+	background-color:#cccccc;
+}
+
+
+/*Drop-Up Menu*/
+
+#footer_menu ul.dropup{
+	display:none;
+}
+
+#footer_menu:hover ul.dropup{
+	display:block;
+	position:fixed;
+	margin:0 0 0 0px;
+	border:5px solid yellow;
+	border-bottom:none;
+	background:#cccccc; /*opaque*/
+	border-radius: 7px 7px 0px 0px;
+	font-size:20px;
+	font-weight:none;
+	font-family:Courier;
+	color:#000000;
+	text-align:left;
+	bottom:25;
+	width:150;
+	right:1;
+	
+}
+
+
+div #queries{
+	display:block;
+	font-size:15px;
+	font-weight:bold;
+	position:fixed;
+	font-family:Courier;
+	height:25;
+	width:150;
+	margin: auto;
+	border:2 px solid gray;
+	position:inline;
+	margin-top:0;
+	bottom: 0;
+  	right: 5;
+	z-index:5;
+}
+
+
+
+#view1{
+	display:block;
+	font-size:10px;
+	font-weight:bold;
+	position:fixed;
+	position:inline;
+	margin-top:0;
+	top: 0;
+  	right:0;
+	z-index:5;
+
+}
+
+#view2{
+	display:block;
+	font-size:10px;
+	font-weight:bold;
+	position:fixed;
+	margin: auto;
+	position:inline;
+	margin-top:0;
+	top: 25;
+  	right: 0;
+	z-index:5;
+
+}
+
+#view {
+    background-color:black;
+    color: yellow;
+    font-size:14px;
+    font-family:Courier,sans-serif;
+    border: 2px solid #000000; /* Black */
+    font-weight:bold;
+}
+
+#view{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#view:hover {
+    background-color: #000000; /* Black */
+    color: white;
+}
+
+#trigger1{
+	display:block;
+	font-size:10px;
+	font-weight:bold;
+	position:fixed;
+	position:inline;
+	margin-top:0;
+	top: 5;
+  	left:0;
+	z-index:5;
+
+}
+
+#trigger2{
+	display:block;
+	font-size:10px;
+	font-weight:bold;
+	position:fixed;
+	margin: auto;
+	position:inline;
+	margin-top:0;
+	top: 35;
+  	left: 0;
+	z-index:5;
+
+}
+
+#trigger {
+    background-color: black;
+    color: yellow;
+    font-size:14px;
+    font-family:Courier,sans-serif;
+    border: 2px solid #000000; /* Black */
+    font-weight:bold;
+}
+
+#trigger{
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#trigger:hover {
+    background-color: #000000; /* Black */
+    color: white;
+}

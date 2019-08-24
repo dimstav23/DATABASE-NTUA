@@ -1,0 +1,86 @@
+CREATE TABLE project.Borrower (
+BId INT(10) NOT NULL AUTO_INCREMENT ,
+Name VARCHAR(40) NULL , 
+Town VARCHAR(30) NULL , 
+StreetName VARCHAR(30) NULL , 
+StreetNumber INT(4) UNSIGNED NULL , 
+PostalCode INT(5) UNSIGNED NULL ,
+PRIMARY KEY (BId)); 
+
+
+CREATE TABLE project.Lender (
+LId INT(10) NOT NULL AUTO_INCREMENT,
+Name VARCHAR(40) NULL ,
+Town VARCHAR(30) NULL ,
+StreetName VARCHAR(30) NULL ,
+StreetNumber INT(4) NULL ,
+PostalCode INT(5) NULL ,
+PRIMARY KEY (LId));
+
+
+CREATE TABLE project.Intermediary (
+MId INT(10) NOT NULL AUTO_INCREMENT ,
+Name VARCHAR(40) NULL ,
+Town VARCHAR(30) NULL ,
+StreetName VARCHAR(30) NULL ,
+StreetNumber INT(4) NULL ,
+PostalCode INT(5) NULL ,
+PRIMARY KEY (MId));
+
+
+CREATE TABLE project.Trust (
+BId INT(10) NOT NULL ,
+LId INT(10) NOT NULL ,
+Percentage INT(3) NULL , 
+FOREIGN KEY (BId) REFERENCES Borrower(BId),
+FOREIGN KEY (LId) REFERENCES Lender(LId),
+PRIMARY KEY (BId,LId));
+
+
+CREATE TABLE project.LoanRequest (
+BId INT(10) NOT NULL ,
+DateOfRequest DATE NOT NULL ,
+DeadLine DATE NULL , 
+Amount INT(20) NULL , 
+PaybackPeriod DATE NULL ,
+Description TEXT(100) NULL , 
+Percentage DECIMAL(3,2) NULL , 
+FOREIGN KEY (BId) REFERENCES Borrower(BId),
+PRIMARY KEY (BId,DateOfRequest));
+
+
+CREATE TABLE project.Commitment (
+BId INT(10) NOT NULL ,
+LId INT(10) NOT NULL ,
+DateOfRequest DATE NOT NULL , 
+Amount DOUBLE(20,2) NULL ,
+FOREIGN KEY (BId,DateOfRequest) REFERENCES LoanRequest(BId,DateOfRequest),
+FOREIGN KEY (LId) REFERENCES Lender(LId),
+PRIMARY KEY (LId,BId,DateOfRequest));
+
+
+CREATE TABLE project.Loan (
+Id INT(10) NOT NULL AUTO_INCREMENT,
+DateOfApproval DATE NOT NULL , 
+MId INT(10) NOT NULL ,
+BId INT(10) NOT NULL ,
+DateOfRequest DATE NOT NULL , 
+FOREIGN KEY (BId,DateOfRequest) REFERENCES LoanRequest(BId,DateOfRequest),
+FOREIGN KEY (MId) REFERENCES Intermediary(MId),
+PRIMARY KEY (Id));
+
+
+CREATE TABLE project.Repayment (
+Id INT(10) NOT NULL ,
+DateOfPayment DATE NOT NULL , 
+Amount DOUBLE(20,2) NULL ,
+FOREIGN KEY (Id) REFERENCES Loan(Id),
+PRIMARY KEY (Id,DateOfPayment));
+
+
+CREATE TABLE project.DeadLine (
+Id INT(10) NOT NULL ,
+DateOfAgreement DATE NOT NULL , 
+DeadLine DATE NULL ,
+FOREIGN KEY (Id) REFERENCES Loan(Id),
+PRIMARY KEY (Id,DateOfAgreement));
